@@ -26,15 +26,10 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding: 0;
         margin: 0;
-        font-size: 1.5rem;
-        line-height: 2;
     }
     a {
         text-decoration: none;
         color: var(--black, black);
-    }
-    a:hover {
-        text-decoration: underline;
     }
     button {
         font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
