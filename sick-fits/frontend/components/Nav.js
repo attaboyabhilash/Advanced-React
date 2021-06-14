@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import NavStyles from './styles/NavStyles';
 
 const Nav = () => (
-  <nav>
+  <NavStyles>
     <Link href="/products">
       <a>Products</a>
     </Link>
@@ -15,7 +16,7 @@ const Nav = () => (
     <Link href="/account">
       <a>Account</a>
     </Link>
-  </nav>
+  </NavStyles>
 );
 
 export default Nav;

@@ -60,14 +60,14 @@
     "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "wesbos"
-    ]
-  },
   "jest": {
     "setupFilesAfterEnv": [
       "./jest.setup.js"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "wesbos"
     ]
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",

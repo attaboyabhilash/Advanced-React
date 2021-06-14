@@ -25,7 +25,7 @@ const NavStyles = styled.ul`
     &:before {
       content: '';
       width: 2px;
-      background: var(--lightGray);
+      background: var(--lightGrey);
       height: 100%;
       left: 0;
       position: absolute;
@@ -43,7 +43,7 @@ const NavStyles = styled.ul`
       transition: width 0.4s;
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
       left: 50%;
-      margin-top: 2rem;
+      margin-top: 4rem;
     }
     &:hover,
     &:focus {
@@ -58,7 +58,7 @@ const NavStyles = styled.ul`
     }
   }
   @media (max-width: 1300px) {
-    border-top: 1px solid var(--lightGray);
+    border-top: 1px solid var(--lightGrey);
     width: 100%;
     justify-content: center;
     font-size: 1.5rem;
