@@ -1,3 +1,9 @@
-const sell = () => <div>Hello</div>;
+import CreateProduct from '../components/CreateProduct';
+
+const sell = () => (
+  <div>
+    <CreateProduct />
+  </div>
+);
 
 export default sell;

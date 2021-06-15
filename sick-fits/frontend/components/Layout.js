@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
 
@@ -34,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
         color: var(--black, black);
     }
     button {
+        cursor: pointer;
         font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 `;

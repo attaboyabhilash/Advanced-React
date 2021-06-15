@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Products from '../components/Products';
 
-const ALL_PRODUCTS_QUERY = gql`
+export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
     allProducts {
       id
