@@ -10,10 +10,15 @@ const DELETE_PRODUCT_MUTATION = gql`
   }
 `;
 
+const update = (cache, payload) => {
+  cache.evict(cache.identify(payload?.data?.deleteProduct));
+};
+
 // eslint-disable-next-line react/prop-types
 const DeleteProduct = ({ id, children }) => {
   const [deleteProduct, { loading }] = useMutation(DELETE_PRODUCT_MUTATION, {
     variables: { id },
+    update,
   });
   return (
     <button
