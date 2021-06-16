@@ -5,27 +5,22 @@ import Form from './styles/Form';
 import ErrorMessage from './ErrorMessage';
 import SuccessStyles from './styles/SuccessStyles';
 
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION(
-    $name: String!
-    $email: String!
-    $password: String!
-  ) {
-    createUser(data: { name: $name, email: $email, password: $password }) {
-      id
-      name
-      email
+const REQUEST_RESET_MUTATION = gql`
+  mutation REQUEST_RESET_MUTATION($email: String!) {
+    sendUserPasswordResetLink(email: $email) {
+      code
+      message
     }
   }
 `;
 
 const RequestReset = () => {
   const { inputs, handleChange, clearForm } = useForm({
-    password: '',
+    email: '',
   });
 
   const [resetPassword, { data, error, loading }] = useMutation(
-    SIGNUP_MUTATION,
+    REQUEST_RESET_MUTATION,
     {
       variables: inputs,
     }
@@ -40,11 +35,10 @@ const RequestReset = () => {
   return (
     <Form method="POST" onSubmit={handleSubmit}>
       <h2>Reset Password</h2>
-      {data?.createUser && (
+      {data?.sendUserPasswordResetLink === null && (
         <SuccessStyles>
           <p>
-            <strong>Success</strong> Please signin with{' '}
-            {data?.createUser?.email}
+            <strong>Success</strong> Please check your email for reset link!
           </p>
         </SuccessStyles>
       )}

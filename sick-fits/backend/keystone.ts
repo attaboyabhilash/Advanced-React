@@ -25,6 +25,12 @@ const { withAuth } = createAuth({
   initFirstItem: {
     fields: ['name', 'email', 'password'],
   },
+  passwordResetLink: {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    async sendToken(args) {
+      console.log(args);
+    },
+  },
 });
 
 export default withAuth(
