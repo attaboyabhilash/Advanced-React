@@ -1,34 +1,52 @@
-import Link from 'next/link';
-import ItemStyles from './styles/ItemStyles';
-import Title from './styles/Title';
-import PriceTag from './styles/PriceTag';
-import formatMoney from '../lib/formatMoney';
-import DeleteProduct from './DeleteProduct';
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+import styled from 'styled-components';
+import { perPage } from '../config';
+import Product from './Product';
 
-const Products = ({ product }) => (
-  <ItemStyles>
-    <img src={product?.photo?.image?.publicUrlTransformed} alt={product.name} />
-    <Title>
-      <Link href={`/product/${product.id}`}>
-        <a>{product.name}</a>
-      </Link>
-    </Title>
-    <PriceTag>{formatMoney(product.price)}</PriceTag>
-    <p>{product.description}</p>
-    <div className="buttonList">
-      <Link
-        href={{
-          pathname: '/update',
-          query: {
-            id: product.id,
-          },
-        }}
-      >
-        <a>Edit ✏️</a>
-      </Link>
-      <DeleteProduct id={product.id}>🚮 Delete</DeleteProduct>
+export const ALL_PRODUCTS_QUERY = gql`
+  query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
+    allProducts(first: $first, skip: $skip) {
+      id
+      name
+      price
+      description
+      photo {
+        id
+        image {
+          publicUrlTransformed
+        }
+      }
+    }
+  }
+`;
+
+const ProductsListStyles = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 60px;
+`;
+
+// eslint-disable-next-line react/prop-types
+export default function Products({ page }) {
+  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
+    variables: {
+      skip: page * perPage - perPage,
+      first: perPage,
+    },
+  });
+
+  if (loading) return <p>Loading...</p>;
+
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <div>
+      <ProductsListStyles>
+        {data.allProducts.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </ProductsListStyles>
     </div>
-  </ItemStyles>
-);
-
-export default Products;
+  );
+}

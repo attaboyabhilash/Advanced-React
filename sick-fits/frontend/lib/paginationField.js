@@ -25,7 +25,8 @@ const paginationField = () => ({
   merge(existing, incoming, { args }) {
     const { skip, first } = args;
     const merged = existing ? existing.slice(0) : [];
-    for (let i = skip; i < skip + incoming.length; i + 1) {
+    // eslint-disable-next-line no-plusplus
+    for (let i = skip; i < skip + incoming.length; ++i) {
       merged[i] = incoming[i - skip];
     }
     return merged;
