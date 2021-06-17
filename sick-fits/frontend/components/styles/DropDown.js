@@ -19,6 +19,7 @@ const DropDownItem = styled.div`
     ${(props) => (props.highlighted ? props.theme.lightgrey : 'white')};
   img {
     margin-right: 10px;
+    width: 50px;
   }
 `;
 
@@ -39,6 +40,7 @@ const SearchStyles = styled.div`
     padding: 10px;
     border: 0;
     font-size: 2rem;
+    outline: none;
     &.loading {
       animation: ${glow} 0.5s ease-in-out infinite alternate;
     }
